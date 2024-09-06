@@ -59,5 +59,17 @@ test('All Operations', async ({ page }) => {
   await fleetUtils.departPlanes();
   // End //
 
+  // Fuel Operations //
+  await page.locator('#mapMaint > img').first().click();
+  
+  await fuelUtils.buyFuel();
+
+  await page.getByRole('button', { name: ' Co2' }).click();
+  await GeneralUtils.sleep(1000);
+  await fuelUtils.buyCo2();
+
+  await page.locator('#popup > .modal-dialog > .modal-content > .modal-header > div > .glyphicons').click();
+  // End //
+
   page.close();
 });
